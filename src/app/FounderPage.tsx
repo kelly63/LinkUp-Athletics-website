@@ -29,18 +29,18 @@ function CollegePhoto() {
   if (failed) return null;
   return (
     <figure className="my-12">
-      <img src={COLLEGE_PHOTO} alt="Kelly LoPinto playing college basketball"
+      <img src={COLLEGE_PHOTO} alt="Kelly LoPinto playing basketball for Fairfield University"
         className="w-full rounded-3xl object-cover" style={{ aspectRatio: "2 / 1", border: `1px solid ${BORDER}` }}
         onError={() => setFailed(true)} />
       <figcaption className="text-sm mt-3" style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'Inter',sans-serif" }}>
-        Kelly during her college playing days.
+        Kelly during her playing days at Fairfield University.
       </figcaption>
     </figure>
   );
 }
 
 const highlights = [
-  { val: "College Athlete", label: "Competed at the college level" },
+  { val: "College Athlete", label: "Fairfield University" },
   { val: "Coach", label: "Private lessons with athletes" },
   { val: "More Reps", label: "Better with a partner, every time" },
 ];
@@ -83,7 +83,7 @@ export default function FounderPage() {
             </h2>
             <div className="flex flex-col gap-6 text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Inter',sans-serif" }}>
               <p>
-                Kelly LoPinto is a former college athlete and coach, married to a former college baseball player. Training has always been part of her life, and she has always been looking for ways to get more reps in.
+                Kelly LoPinto is a former college athlete at Fairfield University and a former coach, married to a former college baseball player. Training has always been part of her life, and she has always been looking for ways to get more reps in.
               </p>
               <CollegePhoto />
               <p>
