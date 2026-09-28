@@ -4,6 +4,8 @@ import { Nav, Footer, APP_STORE, GREEN, NAVY, CARD, BORDER } from "@/app/App";
 
 // Served from public/kelly-lopinto.jpg; until that file exists the initials card shows instead.
 const FOUNDER_PHOTO = "/kelly-lopinto.jpg";
+// Served from public/kelly-lopinto-college.jpg; hidden until that file exists.
+const COLLEGE_PHOTO = "/kelly-lopinto-college.jpg";
 
 function FounderPhoto() {
   const [failed, setFailed] = useState(false);
@@ -19,6 +21,21 @@ function FounderPhoto() {
           className="absolute inset-0 w-full h-full object-cover object-top" onError={() => setFailed(true)} />
       )}
     </div>
+  );
+}
+
+function CollegePhoto() {
+  const [failed, setFailed] = useState(false);
+  if (failed) return null;
+  return (
+    <figure className="my-12">
+      <img src={COLLEGE_PHOTO} alt="Kelly LoPinto playing college basketball"
+        className="w-full rounded-3xl object-cover" style={{ aspectRatio: "2 / 1", border: `1px solid ${BORDER}` }}
+        onError={() => setFailed(true)} />
+      <figcaption className="text-sm mt-3" style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'Inter',sans-serif" }}>
+        Kelly during her college playing days.
+      </figcaption>
+    </figure>
   );
 }
 
@@ -68,6 +85,7 @@ export default function FounderPage() {
               <p>
                 Kelly LoPinto is a former college athlete and coach, married to a former college baseball player. Training has always been part of her life, and she has always been looking for ways to get more reps in.
               </p>
+              <CollegePhoto />
               <p>
                 From the time she turned 17, Kelly faced injury after injury. They kept her from reaching her full potential as an athlete, and taught her how much every healthy, productive session is worth.
               </p>
