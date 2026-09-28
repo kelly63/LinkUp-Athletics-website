@@ -41,7 +41,7 @@ function CollegePhoto() {
 
 const highlights = [
   { val: "College Athlete", label: "Fairfield University" },
-  { val: "Coach", label: "Private lessons with athletes" },
+  { val: "Coach", label: "Girls' basketball teams, camps, clinics & private lessons" },
   { val: "More Reps", label: "Better with a partner, every time" },
 ];
 
@@ -83,14 +83,14 @@ export default function FounderPage() {
             </h2>
             <div className="flex flex-col gap-6 text-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Inter',sans-serif" }}>
               <p>
-                Kelly LoPinto is a former college athlete at Fairfield University and a former coach, married to a former college baseball player. Training has always been part of her life, and she has always been looking for ways to get more reps in.
+                Kelly LoPinto is a former college athlete at Fairfield University and a former coach, married to a former college baseball player. In his off-seasons, he was always looking for training partners, and finding them was his biggest obstacle. Training has always been part of Kelly's life, and she has always been looking for ways to get more reps in.
               </p>
               <CollegePhoto />
               <p>
                 From the time she turned 17, Kelly faced injury after injury. They kept her from reaching her full potential as an athlete, and taught her how much every healthy, productive session is worth.
               </p>
               <p>
-                As a coach, Kelly gave a lot of private lessons, and she saw again and again what happens when athletes work out with someone else: they push harder, stay accountable, and get better.
+                As a coach, Kelly led girls' basketball teams, ran camps and clinics, and gave a lot of private lessons. Again and again, she saw what happens when athletes work out with someone else: they push harder, stay accountable, and get better.
               </p>
               <p style={{ color: "rgba(255,255,255,0.8)" }}>
                 That is why she built LinkUp Athletics: to help athletes maximize their potential, something she was never able to physically do herself.
