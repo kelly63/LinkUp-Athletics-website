@@ -10,18 +10,18 @@ import ratingsScreen from "@/imports/Screenshot_2026-07-01_at_6.14.53_PM.png";
 import chatScreen from "@/imports/Screenshot_2026-07-01_at_6.17.53_PM.png";
 import sessionModal from "@/imports/Screenshot_2026-07-01_at_5.56.53_PM_2.png";
 
-const APP_STORE = "https://apps.apple.com/us/app/linkup-athletics/id6773773504";
-const GREEN = "#4ade80";
+export const APP_STORE = "https://apps.apple.com/us/app/linkup-athletics/id6773773504";
+export const GREEN = "#4ade80";
 const GREEN_MID = "#16a34a";
-const NAVY = "#060f1e";
-const CARD = "rgba(255,255,255,0.04)";
-const BORDER = "rgba(255,255,255,0.08)";
+export const NAVY = "#060f1e";
+export const CARD = "rgba(255,255,255,0.04)";
+export const BORDER = "rgba(255,255,255,0.08)";
 
 const HERO_IMG = "https://images.unsplash.com/photo-1755877956621-5fac2eae4ebb?w=1600&h=900&fit=crop&auto=format";
 const SPORT_IMG = "https://images.unsplash.com/photo-1562519819-016930ada31b?w=800&h=600&fit=crop&auto=format";
 const TRACK_IMG = "https://images.unsplash.com/photo-1760114852702-9c65fe257a52?w=800&h=600&fit=crop&auto=format";
 
-function Logo({ size = "md" }: { size?: "sm" | "md" }) {
+export function Logo({ size = "md" }: { size?: "sm" | "md" }) {
   const h = size === "sm" ? 36 : 44;
   const fs1 = size === "sm" ? 24 : 30;
   const fs2 = size === "sm" ? 10 : 12;
@@ -38,7 +38,7 @@ function Logo({ size = "md" }: { size?: "sm" | "md" }) {
   );
 }
 
-function PhoneFrame({ image, alt, size = 200 }: { image: string; alt: string; size?: number }) {
+export function PhoneFrame({ image, alt, size = 200 }: { image: string; alt: string; size?: number }) {
   const h = Math.round(size * 2.02);
   return (
     <div className="relative mx-auto select-none" style={{ width: size, height: h, flexShrink: 0 }}>
@@ -55,7 +55,12 @@ function PhoneFrame({ image, alt, size = 200 }: { image: string; alt: string; si
   );
 }
 
-function Nav() {
+// Section anchors live on the home page; `home` is "/" on other pages so they link back to it.
+function navHref(label: string, home: string) {
+  return label === "Founder" ? "/founder" : `${home}#${label.toLowerCase().replace(/ /g, "-")}`;
+}
+
+export function Nav({ home = "" }: { home?: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -63,15 +68,15 @@ function Nav() {
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
-  const links = ["About", "Features", "Founding Athletes", "Contact"];
+  const links = ["About", "Features", "Founding Athletes", "Founder", "Contact"];
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4 transition-all duration-300"
         style={{ background: scrolled ? "rgba(6,15,30,0.95)" : "transparent", backdropFilter: scrolled ? "blur(16px)" : "none", borderBottom: scrolled ? `1px solid ${BORDER}` : "1px solid transparent" }}>
-        <Logo />
+        <a href="/" aria-label="LinkUp Athletics home"><Logo /></a>
         <div className="hidden md:flex items-center gap-8">
           {links.map(l => (
-            <a key={l} href={`#${l.toLowerCase().replace(/ /g, "-")}`} className="text-sm font-medium transition-colors duration-200"
+            <a key={l} href={navHref(l, home)} className="text-sm font-medium transition-colors duration-200"
               style={{ color: "rgba(255,255,255,0.5)", fontFamily: "'Inter',sans-serif" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}>
@@ -93,7 +98,7 @@ function Nav() {
       {open && (
         <div className="fixed inset-0 z-40 flex flex-col pt-20 px-6 pb-10 gap-6" style={{ background: "rgba(6,15,30,0.98)", backdropFilter: "blur(20px)" }}>
           {links.map(l => (
-            <a key={l} href={`#${l.toLowerCase().replace(/ /g, "-")}`} onClick={() => setOpen(false)}
+            <a key={l} href={navHref(l, home)} onClick={() => setOpen(false)}
               className="text-2xl font-bold text-white border-b py-4" style={{ borderColor: BORDER, fontFamily: "'Plus Jakarta Sans',sans-serif" }}>
               {l}
             </a>
@@ -400,7 +405,7 @@ function Contact() {
   );
 }
 
-function Footer() {
+export function Footer({ home = "" }: { home?: string }) {
   return (
     <footer className="px-6 md:px-12 py-10" style={{ background: "#030a12", borderTop: `1px solid ${BORDER}` }}>
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
@@ -409,8 +414,8 @@ function Footer() {
           © {new Date().getFullYear()} LinkUp Athletics. College Level and Beyond.
         </p>
         <div className="flex items-center gap-6">
-          {["About", "Contact", "Privacy", "Terms"].map(l => (
-            <a key={l} href={`#${l.toLowerCase()}`} className="text-xs transition-colors duration-200"
+          {["About", "Founder", "Contact", "Privacy", "Terms"].map(l => (
+            <a key={l} href={navHref(l, home)} className="text-xs transition-colors duration-200"
               style={{ color: "rgba(255,255,255,0.3)", fontFamily: "'Inter',sans-serif" }}
               onMouseEnter={e => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
               onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.3)")}>

@@ -31,6 +31,16 @@ export default defineConfig({
     },
   },
 
+  // Each HTML file is its own page (founder.html is served at /founder).
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        founder: path.resolve(__dirname, 'founder.html'),
+      },
+    },
+  },
+
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
 })
